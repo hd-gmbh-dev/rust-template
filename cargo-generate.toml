@@ -1,0 +1,21 @@
+[template]
+cargo_generate_version = ">=0.21.0"
+
+[hooks]
+pre = ["pre.rhai"]
+
+[placeholders]
+project_type = { type = "string", prompt = "Project type", choices = [
+    "Binary",
+    "Library",
+    "Workspace",
+], default = "Workspace" }
+
+[conditional.'project_type == "Workspace"']
+ignore = ["src"]
+
+[conditional.'project_type == "Binary"']
+ignore = ["crates"]
+
+[conditional.'project_type == "Library"']
+ignore = ["crates", "src/main.rs"]
