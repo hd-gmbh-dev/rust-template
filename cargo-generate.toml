@@ -1,7 +1,7 @@
 # Docs: https://cargo-generate.github.io/cargo-generate/index.html
 
 [template]
-cargo_generate_version = ">=0.21.0"
+cargo_generate_version = ">=0.20.0"
 ignore = [
     ".github/workflows/generate.yml"
 ]
