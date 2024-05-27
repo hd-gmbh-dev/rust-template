@@ -20,7 +20,7 @@ jobs:
       - uses: cargo-generate/cargo-generate-action@latest
         with:
           name: ${{ env.PROJECT_NAME }}
-          arguments: "--define project_type=\"Binary\""
+          arguments: "--define project_type=Binary"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
