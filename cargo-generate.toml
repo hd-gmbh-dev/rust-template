@@ -9,13 +9,42 @@ project_type = { type = "string", prompt = "Project type", choices = [
     "Binary",
     "Library",
     "Workspace",
+    "Workspace Member",
 ], default = "Workspace" }
 
 [conditional.'project_type == "Workspace"']
-ignore = ["src"]
+ignore = [
+    "src",
+    "Cargo.generic.toml",
+    "Cargo.member.toml",
+    ".gitignore.library",
+]
 
 [conditional.'project_type == "Binary"']
-ignore = ["crates"]
+ignore = [
+    "crates",
+    "Cargo.member.toml",
+    "Cargo.workspace.toml",
+    ".gitignore.library",
+]
 
 [conditional.'project_type == "Library"']
-ignore = ["crates", "src/main.rs"]
+ignore = [
+    "crates",
+    "src/main.rs",
+    "Cargo.member.toml",
+    "Cargo.workspace.toml",
+    ".gitignore.generic",
+]
+
+[conditional.'project_type == "Workspace Member"']
+ignore = [
+    "crates",
+    "LICENSE",
+    "README.md",
+    "src/main.rs",
+    "Cargo.generic.toml",
+    "Cargo.workspace.toml",
+    ".gitignore.generic",
+    ".gitignore.library",
+]
